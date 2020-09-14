@@ -8,15 +8,11 @@ def parse_categories(notes):
     text = ""
     next_is_expression_end = False
     next_is_category_end = False
-    for line in notes.splitlines():
+    for i, line in enumerate(notes.splitlines()):
         if len(line.split()) == 0:
             continue
-        if "\t" not in line and next_is_category_end:
-            expressions.append(text)
-            text = ""
-            next_is_category_end = False
-        if "\t" not in line and not next_is_category_end:
-            text = text + line
+        if "\t" not in line:
+            expressions.append(line)
             next_is_category_end = True
         if "\t" in line and line.count("\t") == 1 and next_is_expression_end:
             #text = text + "\n" + line

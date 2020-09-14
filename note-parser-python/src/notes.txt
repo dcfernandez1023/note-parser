@@ -33,8 +33,8 @@ Periodic Table of Elements
 		Oxygen
 		Phosphorus
 		Sulfur 
-	Atomic number of an element = number of protons (top left number of element on periodic table)
-	In a neutral atom, the number of electrons = number of protons 
-	Atomic mass = number of protons + number of neutrons 
-	Isotope = version of an element with a different number of neutrons
-	Atomic mass in the table is the average of possible masses, weighted based on abundance of each isotope 
+Atomic number of an element = number of protons (top left number of element on periodic table)
+In a neutral atom, the number of electrons = number of protons 
+Atomic mass = number of protons + number of neutrons 
+Isotope = version of an element with a different number of neutrons
+Atomic mass in the table is the average of possible masses, weighted based on abundance of each isotope 
