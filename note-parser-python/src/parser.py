@@ -28,37 +28,14 @@ def parse_categories(notes):
             next_is_expression_end = True
         if "\t" in line and line.count("\t") > 1:
             text = text + "\n" + line
-        
-            
-    # for line in notes.splitlines():
-        # if "\t" in line:
-            # if line.count("\t") == 1: 
-                # if next_is_end:
-                    # expressions.append(text)
-                    # text = ""
-                    # expressions.append(line)
-                    # next_is_end = False
-                # else:
-                    # next_is_end = True
-                    # text = text + line
-            # else:
-                # text = text + line
-        # else:
-            # expressions.append(text)
-            # text = ""
-            # expressions.append(line)
     for e in expressions:
         print(e)
         print("~~~~~")
                 
-                
-#testing spacy apis 
-#notes = "The cell is the smallest unit of life that can perform all activities required for life. Cells share characteristics. They have Two main forms: Prokaryotic (no nucleus containing DNA)Eukaryotic (nucleus contains DNA) Chromosomes contain genetic material in the form of DNA. Genes are units of inheritance that transmit information from parents to offspring"
 file = open("notes.txt", "r")
 notes = ""
 for line in file:
    notes = notes + str(line)
-#print(notes)
 doc = NLP(notes)
 print("----------")
 parse_categories(notes)
