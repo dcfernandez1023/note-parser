@@ -1,0 +1,92 @@
+~~ NOTE PARSER OPTIONS ~~
+
+Line Parser
+  Description:
+    - The most basic parser
+	- Each line is regarded as an expression that can be used for flashcards, quizzes, etc.
+  
+	Example:
+      ***
+		"""
+		This line will be an expression.
+		This line will also be an expression
+		yooooo
+		The previous line was an expression, and so is this
+		"""
+	  ***
+	
+
+Sentence Parser
+  Description:
+	- Works best for notes that are taken in lines of sentences without bullet-point lists
+	- Uses spaCy's NLP model to identify sentences in notes
+	- Each identified sentence will be regarded as an expression that can be used for flashcards, quizzes, etc.
+	
+	Example:
+	  ***
+		"""
+		- This is a sentence
+		- This is another sentence
+		- The note parser will identify sentences in your notes
+		- As long as your notes resemble sentences and are somewhat grammatically correct, the parser should identify it  
+		- If the results of the parser are not what you expected, then you will always have the option to manually change its results
+		"""
+	  ***
+	
+	  ***
+		"""
+		This is a sentence. This is another sentence. The note parser will identify sentences in your notes.
+		As long as your notes resemble sentences and are somewhat gramatically correct,
+		the parser should identify it.
+		If the results of the parser are not what you expected, then you will always have the option to manually change its results.
+		"""
+	  ***
+
+
+List Parser
+  Description:
+    - Works best for notes that are taken in bullet-point format 
+	- Uses tabs to identify bullet-point lists 
+	- Each identified list will be regarded as an expression that can be used for flashcards, quizzes, etc.
+	
+	Example:
+	  ***
+		"""
+		Test List
+			- This is a test bullet-point
+				- Yoooooooo
+			- Another test bullet-point
+			- This entire list will be regarded as one expression
+			- If the results of the parser are not what you expected, then you will always have the option to manually change its results
+		
+		This line will be taken as one expression
+		So will this one
+		"""
+	  ***
+	  
+
+Category Parser
+  Description:
+    - Works best for notes that are separated into categories 
+	- Similar to the list parser, except that non-tabbed lines are regarded as categories
+	- Anything tabbed under the category will be regarded as an expression 
+	- Each expression identified under a category can be used for flashcards, quizzes, etc.
+	
+	Example:
+	  ***
+		"""
+		This is a Category                                         \
+			- This is a bullet-point under a category               \__  *this is an expression
+			- This is another bullet-point under the same category  /
+				- This is a sub-bullet-point                       /
+				
+		This is another Category                               \__ *this is an expression
+			- This is a bullet-point under a category          /
+			
+		This is not a category, but an expression, since there are no bullet-points underneath it
+		"""
+	  ***
+	
+	  
+
+	  

@@ -1,0 +1,40 @@
+8/19/20
+The Cell
+	The cell is the smallest unit of life that can perform all activities required for life
+	Cells share characteristics 
+	Two main forms
+		Prokaryotic (no nucleus containing DNA)
+		Eukaryotic (nucleus contains DNA)
+	Chromosomes contain genetic material in the form of DNA
+	Genes are units of inheritance that transmit information from parents to offspring 
+
+8/21/20
+Chemical Context of Life
+Atom
+	Smallest unit of matter
+	Consists of
+		Protons (p+) - found in nucleus (positive charge)
+		Neutrons (n0) - found in nucleus (no charge)
+		Electron (e-) - (negative charge) 
+	Electrons determine chemical activity of an atom
+	Electrons move around the nucleus in orbitals
+	Each orbital holds 2 electrons 
+	Shells of an atom:
+		1st shell ~ contains 1 orbital, 2 electrons maximum
+		2nd+ shell ~ contains 4 orbitals, 8 electrons maximum
+	Outermost shell = valence shell 
+	# of unpaired electrons in valence shell = valence
+	Atoms make bonds to fill valence and become more stable 
+Periodic Table of Elements
+	6 elements important for life
+		Hydrogen
+		Carbon
+		Nitrogen
+		Oxygen
+		Phosphorus
+		Sulfur 
+	Atomic number of an element = number of protons (top left number of element on periodic table)
+	In a neutral atom, the number of electrons = number of protons 
+	Atomic mass = number of protons + number of neutrons 
+	Isotope = version of an element with a different number of neutrons
+	Atomic mass in the table is the average of possible masses, weighted based on abundance of each isotope 
