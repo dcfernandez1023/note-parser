@@ -1,21 +1,44 @@
 import spacy
 
 NLP = spacy.load("en_core_web_sm")
-#len(token.text.split()) == 0 and len(token.text) > 1
+
+def parse_line_by_line(notes):
+    expressions = []
+    for line in notes.splitlines():
+        if not len(line.split()) == 0:
+            expressions.append(line)
+    return expressions
+
+def parse_lists(notes):
+    expressions = []
+    text = ""
+    next_is_expression_end = False
+    for i, line in enumerate(notes.splitlines()):
+        if len(line.split()) == 0:
+            continue
+        if "\t" in line: 
+            text = text + "\n" + line
+        if "\t" not in line and next_is_expression_end:
+            expressions.append(text)
+            text = ""
+            next_is_expression_end = False
+        if "\t" not in line and not next_is_expression_end:
+            text = text + line
+            next_is_expression_end = True
+        if i == len(notes.splitlines()) - 1 and len(text.split()) != 0:
+            expressions.append(text)
+    return expressions
 
 def parse_categories(notes):
     expressions = []
     text = ""
     next_is_expression_end = False
-    next_is_category_end = False
-    for i, line in enumerate(notes.splitlines()):
+    for line in notes.splitlines():
         if len(line.split()) == 0:
             continue
         if "\t" not in line:
             expressions.append(line)
-            next_is_category_end = True
         if "\t" in line and line.count("\t") == 1 and next_is_expression_end:
-            #text = text + "\n" + line
             expressions.append(text)
             text = ""
             next_is_expression_end = False
@@ -24,9 +47,7 @@ def parse_categories(notes):
             next_is_expression_end = True
         if "\t" in line and line.count("\t") > 1:
             text = text + "\n" + line
-    for e in expressions:
-        print(e)
-        print("~~~~~")
+        return expressions
                 
 file = open("notes.txt", "r")
 notes = ""
@@ -34,7 +55,10 @@ for line in file:
    notes = notes + str(line)
 doc = NLP(notes)
 print("----------")
-parse_categories(notes)
+expressions = parse_lists(notes)
+for e in expressions:
+    print(e)
+    print("~~~~~")
 # for token in doc:
     # print(token, " -- ", token.pos_)
 # doc_json = doc.to_json()
