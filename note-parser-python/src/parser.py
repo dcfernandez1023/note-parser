@@ -8,6 +8,23 @@ def parse_line_by_line(notes):
         if not len(line.split()) == 0:
             expressions.append(line)
     return expressions
+    
+def parse_sentences(notes):
+    expressions = []
+    doc = NLP(notes)
+    doc_json = doc.to_json()
+    sents = doc_json["sents"]
+    text = doc_json["text"]
+    for s in sents:
+        start = s["start"]
+        end = s["end"]
+        sent_string = ""
+        while start < end:
+            sent_string = sent_string + text[start]
+            start = start + 1
+        expressions.append(sent_string)
+    return expressions
+        
 
 def parse_lists(notes):
     expressions = []
@@ -48,56 +65,27 @@ def parse_categories(notes):
         if "\t" in line and line.count("\t") > 1:
             text = text + "\n" + line
         return expressions
+
+def construct_docs(expressions):
+    docs = []
+    for e in expressions:
+        docs.append(NLP(e))
+    return docs
+        
+def generate_flashcards(expressions):
+    cards = []
+    return cards
                 
 file = open("notes.txt", "r")
 notes = ""
 for line in file:
    notes = notes + str(line)
-doc = NLP(notes)
-print("----------")
-expressions = parse_lists(notes)
+expressions = parse_sentences(notes)
+# print(expressions)
 for e in expressions:
     print(e)
     print("~~~~~")
-# for token in doc:
-    # print(token, " -- ", token.pos_)
-# doc_json = doc.to_json()
-# #print(doc_json)
-# text = doc_json["text"]
-# sents = doc_json["sents"]
-# ents = doc_json["ents"]
-# cards = []
-# i = 1
+# docs = construct_docs(expressions)
 
 
 
-# print()
-# print("SENTENCES")
-
-# for s in sents:
-    # start = s["start"]
-    # end = s["end"]
-    # print("~~ Sentence " + str(i) + " ~~")
-    # sent_string = ""
-    # card = {"front": "", "back": ""}
-    # front = True
-    # while(start < end):
-        # sent_string = sent_string + text[start]
-        # start = start + 1
-    # print(sent_string)
-    # sent_doc = NLP(sent_string)
-    # index = 0
-    # for token in sent_doc:
-        # print(token, " - ", token.pos_)
-        # if front:
-            # if token.pos_ == "AUX" or token.pos_ == "VERB":
-                # card["front"] = card["front"] + token.text
-                # front = False
-            # else:
-                # card["front"] = card["front"] + token.text + " "
-        # else:
-            # card["back"] = card["back"] + token.text + " "
-        # index = index + 1
-    # print(card)
-    # print("----------")
-    # i = i + 1
